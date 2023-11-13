@@ -1,0 +1,15 @@
+{
+  "name": "flopumentation",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "roll dev",
+    "build": "roll build"
+  },
+  "dependencies": {
+    "highlight.js": "^11.9.0"
+  },
+  "devDependencies": {
+    "@tangible/roller": "^1.2.1",
+    "marked": "^10.0.0"
+  }
+}

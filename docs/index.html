@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flopumentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark-dimmed.css">
+    <link rel="stylesheet" href="./build/flopumentation.min.css">
+    <script src="./build/flopumentation.min.js"></script>
+  </head>
+  <body>
+    <script>
+      flopumentation({
+        title       : 'Flopumentation',
+        initialPage : './pages/usage.md',
+        sections    : [
+          {
+            title : 'Getting started',
+            pages : [
+              { 
+                title   : 'Usage',
+                content : './pages/usage.md'
+              }
+            ]
+          }
+        ]
+      })
+    </script>
+  </body>
+</html>
