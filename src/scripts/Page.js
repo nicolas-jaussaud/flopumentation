@@ -13,6 +13,7 @@ class Page {
    * <span class="loading-bar"></span>
    * <header id="header" class="load">
    *   <h1 id="title"></h1>
+   *   <span id="theme"></span>
    * </header>
    * <div id="container">
    *   <aside>
@@ -20,8 +21,6 @@ class Page {
    *   </aside>
    *   <main id="content"></main>
    * </div>
-   * <footer id="footer"></footer>
-   * 
    */
   generateDOM = () => {
 
@@ -30,23 +29,24 @@ class Page {
       container  : document.createElement('div'),
       loadingBar : document.createElement('span'),
       header     : document.createElement('header'),
+      theme      : document.createElement('span'),
       title      : document.createElement('h1'),
       menu       : document.createElement('nav'),
-      main       : document.createElement('main'),
-      footer     : document.createElement('footer')
+      main       : document.createElement('main')
     }
 
-    const ids = ['container', 'header', 'main', 'title', 'footer']
+    const ids = ['container', 'header', 'main', 'title', 'theme']
     ids.forEach(name => {
       this.element[ name ].id = name  
     })
 
-    this.element.textContent = this.config.title ?? ''
+    this.element.title.textContent = this.config.title ?? ''
 
     this.element.loadingBar.className = 'loading-bar'
     this.element.header.className = 'load'
     
     this.element.header.appendChild(this.element.title)
+    this.element.header.appendChild(this.element.theme)
     this.element.aside.appendChild(this.element.menu)
     this.element.container.appendChild(this.element.aside)
     this.element.container.appendChild(this.element.main)
@@ -54,7 +54,6 @@ class Page {
     document.body.appendChild(this.element.loadingBar)
     document.body.appendChild(this.element.header)
     document.body.appendChild(this.element.container)
-    document.body.appendChild(this.element.footer)
 
     this.generateMenu()
   }
@@ -67,6 +66,23 @@ class Page {
     this.config.sections.forEach(
       section => sections.appendChild( this.addSection(section) )
     )
+
+    this.initMobileEvents()
+    this.initThemeEvents()
+  }
+
+  initMobileEvents() {
+    this.element.aside.addEventListener('click', () => {
+      const isOpen = this.element.aside.getAttribute('data-open') !== 'true'
+      this.element.aside.setAttribute('data-open', isOpen ? 'true' : 'false')
+    })
+  }
+
+  initThemeEvents() {
+    this.element.theme.addEventListener('click', () => {
+      const theme = document.body.getAttribute('data-theme')
+      document.body.setAttribute('data-theme', theme === 'light' ? 'dark' : 'light')
+    })
   }
 
   addSection = section => {
