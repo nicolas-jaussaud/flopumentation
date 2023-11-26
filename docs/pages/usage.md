@@ -10,7 +10,7 @@ To integrate **Flopumentation** into your project, you need to copy this two CSS
 
 ### Add your markdown file
 
-Create a folder that will contain all your markdown files. In this example we will call it `/pages/` but it can be anything.
+Create a folder that will contain all your markdown files. In this example we will call it __/pages/__ but it can be anything.
 
 ### Create index.html
 

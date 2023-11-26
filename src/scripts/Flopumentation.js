@@ -10,20 +10,31 @@ class Flopumentation {
     
     document.addEventListener('DOMContentLoaded', () => {
       this.page.generateDOM()
-      this.initListener()
+      this.initMenuListener()
       this.loadPage(this.config.initialPage ?? '')
     })
 
-    this.initListener.bind(this)
+    this.initMenuListener.bind(this)
+    this.initContentListener.bind(this)
     this.loadPage.bind(this)
   }
 
-  initListener = () => {
+  initMenuListener = () => {
     const pages = this.page.getMenuItems()
     pages.forEach(item => {
       item.addEventListener('click', event => {
         this.loadPage( event.target.getAttribute('href').substring(1) )
       })
+    })
+  }
+
+  initContentListener = () => {
+    const links = this.page.getContentLinks()
+    links.forEach(link => {
+      const href = link.getAttribute('href')
+      if( href.startsWith('http') || href.startsWith('#') ) return;
+      link.setAttribute('href', `#${href}`)
+      link.addEventListener('click', () => this.loadPage(href))
     })
   }
 
@@ -37,7 +48,10 @@ class Flopumentation {
       .then(this.page.setContent)
       .finally(() => {
         hljs.highlightAll()
+        this.initContentListener()
+        this.page.setContentAnchors()
         this.page.element.main.classList.remove('fade')
+        this.page.element.main.scrollTop = 0
         setTimeout(() => this.page.toggleLoading(false), 1000)
       })
   }

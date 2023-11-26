@@ -75,6 +75,7 @@ class Page {
     this.element.aside.addEventListener('click', () => {
       const isOpen = this.element.aside.getAttribute('data-open') !== 'true'
       this.element.aside.setAttribute('data-open', isOpen ? 'true' : 'false')
+      if( isOpen ) this.element.menu.scrollTop = 0
     })
   }
 
@@ -112,8 +113,20 @@ class Page {
     return pageElement
   }
 
+  setContentAnchors = () => {
+    const title = this.getContentTitles()
+    title.forEach(
+      title => title.setAttribute(
+        'id', 
+        title.textContent.toLowerCase().replaceAll(' ', '-')
+      )
+    )
+  }
+
   setContent = content => this.element.main.innerHTML = marked.parse(content) 
-  getMenuItems = () => this.element.menu.querySelectorAll('nav a')    
+  getMenuItems = () => this.element.menu.querySelectorAll('nav a')
+  getContentTitles = () => this.element.main.querySelectorAll('h1, h2, h3, h4, h5, h6')
+  getContentLinks = () => this.element.main.querySelectorAll('a')
   toggleLoading = loading => (
     this.element.loadingBar.setAttribute('data-loading', loading ? 'on' : 'off')
   )

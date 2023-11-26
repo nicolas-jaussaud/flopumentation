@@ -6,14 +6,17 @@ progress,sub,sup{vertical-align:initial}a,hr{color:inherit}body{margin:0;font-fa
   --text: white;
   --background: black;
   --max-width: 1400px;
+  --color-scheme: dark;
 }
 
 [data-theme="light"] {
   --text: black;
   --background: white;
+  --color-scheme: light;
 }
 
 body {
+  color-scheme: var(--color-scheme);
   color: var(--text);
   text-decoration: none;
   min-width: 100vw;
@@ -66,6 +69,10 @@ main {
   padding-right: 50px;
 }
 
+main#main > :last-child {
+  margin-bottom: 50px;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -83,9 +90,9 @@ header {
 
   #theme::after {
     content: '◐';
-    font-size: 30px;
+    font-size: 45px;
     cursor: pointer;
-    font-family: 'none';
+    font-family: 'monospace';
   }
 }
 
@@ -122,7 +129,7 @@ header {
 
 #main {
   max-height: calc(100vh - 100px);
-  overflow: scroll;
+  overflow: auto;
   padding-bottom: 50px;
 
   opacity: 1;
@@ -142,12 +149,20 @@ header {
   // Undo reset for lists
   ul {  list-style-type: disc;  list-style-position: inside; }
   ol { list-style-type: decimal; list-style-position: inside; }
+  ul, ol { margin-bottom: 1.3rem }
   ul ul, ol ul { list-style-type: circle; list-style-position: inside; margin-left: 15px; }
   ol ol, ul ol { list-style-type: lower-latin; list-style-position: inside; margin-left: 15px; }
 
   // Avoid style conflict with highlightjs
   pre, code {
     background-color: #2b2b2b;
+    overflow: auto;
+  }
+
+  p code { 
+    color: white; 
+    background: var(#2b2b2b);
+    padding: 2px 5px;
   }
 
   pre, iframe {
@@ -155,7 +170,10 @@ header {
     margin-top: 1.3rem;
   }
 
-  *:first-child {
+  h1:first-child,
+  h2:first-child,
+  h3:first-child,
+  h4:first-child {
     margin-top: 0;
     padding-top: 0;
   }
