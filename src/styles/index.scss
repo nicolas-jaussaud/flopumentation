@@ -30,7 +30,7 @@ body > div {
   display: flex;
   width: 100%;
   height: 100%;
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 120px);
   max-width: var(--max-width);
   margin: auto;
 }
@@ -43,6 +43,9 @@ aside nav {
 aside {
   flex: 1;
   padding-left: 50px;
+  max-height: calc(100vh - 120px);
+  overflow: auto;
+  margin-right: 50px;
 
   nav > ul > li {
     font-weight: bold;
@@ -81,7 +84,7 @@ header {
   width: 100%;
   max-width: var(--max-width);
   margin: auto;
-  padding: 50px;
+  padding: 10px 50px;
 
   h1 {
     font-size: 30px;

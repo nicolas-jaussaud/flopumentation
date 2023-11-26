@@ -38,7 +38,8 @@ aside {
   background-color: transparent;
   top: 0;
   right: 0;
-
+  overflow: visible;
+  
   nav {
     display: none;
     position: fixed;
