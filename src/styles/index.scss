@@ -91,11 +91,23 @@ header {
     font-weight: bold;
   }
 
-  #theme::after {
-    content: '◐';
-    font-size: 45px;
+  #theme {
     cursor: pointer;
-    font-family: 'monospace';
+    width: 25px;
+    height: 25px;
+    background: var(--background);
+    border-radius: 20px;
+    border: 2px var(--text) solid;
+    overflow: hidden;
+    margin-right: -30px;
+
+    &:before {
+      content: '';
+      background: var(--text);
+      width: 50%;
+      height: 100%;
+      display: block;
+    }
   }
 }
 

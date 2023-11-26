@@ -44,7 +44,7 @@ class Page {
 
     this.element.loadingBar.className = 'loading-bar'
     this.element.header.className = 'load'
-    
+
     this.element.header.appendChild(this.element.title)
     this.element.header.appendChild(this.element.theme)
     this.element.aside.appendChild(this.element.menu)

@@ -16,11 +16,6 @@ header {
 
   #theme {
     margin-right: 70px;
-    margin-top: -12px;
-
-    &:after {
-      font-size: 65px;
-    }
   }
 }
 
@@ -39,7 +34,7 @@ aside {
   top: 0;
   right: 0;
   overflow: visible;
-  
+
   nav {
     display: none;
     position: fixed;
