@@ -5,7 +5,8 @@ progress,sub,sup{vertical-align:initial}a,hr{color:inherit}body{margin:0;font-fa
   --secondary: cornflowerblue;
   --text: white;
   --background: black;
-  --max-width: 1400px;
+  --max-width: 100%;
+  --max-content-width: 900px;
   --color-scheme: dark;
 }
 
@@ -70,6 +71,12 @@ aside {
 main {
   flex: 3;
   padding-right: 50px;
+  max-width: 100%;
+
+  & > #content {
+    margin: auto;
+    max-width: var(--max-content-width);
+  }
 }
 
 main#main > :last-child {

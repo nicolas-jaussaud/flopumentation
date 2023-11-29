@@ -19,7 +19,9 @@ class Page {
    *   <aside>
    *     <nav id="menu"></nav>
    *   </aside>
-   *   <main id="content"></main>
+   *   <main id="main">
+   *     <div id="content"></div>
+   *   </main>
    * </div>
    */
   generateDOM = () => {
@@ -32,10 +34,11 @@ class Page {
       theme      : document.createElement('span'),
       title      : document.createElement('h1'),
       menu       : document.createElement('nav'),
-      main       : document.createElement('main')
+      main       : document.createElement('main'),
+      content    : document.createElement('div')
     }
 
-    const ids = ['container', 'header', 'main', 'title', 'theme']
+    const ids = ['container', 'header', 'main', 'title', 'theme', 'content']
     ids.forEach(name => {
       this.element[ name ].id = name  
     })
@@ -45,6 +48,7 @@ class Page {
     this.element.loadingBar.className = 'loading-bar'
     this.element.header.className = 'load'
 
+    this.element.main.appendChild(this.element.content)
     this.element.header.appendChild(this.element.title)
     this.element.header.appendChild(this.element.theme)
     this.element.aside.appendChild(this.element.menu)
@@ -123,10 +127,10 @@ class Page {
     )
   }
 
-  setContent = content => this.element.main.innerHTML = marked.parse(content) 
+  setContent = content => this.element.content.innerHTML = marked.parse(content) 
   getMenuItems = () => this.element.menu.querySelectorAll('nav a')
-  getContentTitles = () => this.element.main.querySelectorAll('h1, h2, h3, h4, h5, h6')
-  getContentLinks = () => this.element.main.querySelectorAll('a')
+  getContentTitles = () => this.element.content.querySelectorAll('h1, h2, h3, h4, h5, h6')
+  getContentLinks = () => this.element.content.querySelectorAll('a')
   toggleLoading = loading => (
     this.element.loadingBar.setAttribute('data-loading', loading ? 'on' : 'off')
   )
