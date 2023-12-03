@@ -79,10 +79,6 @@ main {
   }
 }
 
-main#main > :last-child {
-  margin-bottom: 50px;
-}
-
 header {
   display: flex;
   justify-content: space-between;
@@ -115,6 +111,31 @@ header {
       height: 100%;
       display: block;
     }
+  }
+}
+
+footer#footer {
+  display: flex;
+  padding: 40px 0;
+  max-width: var(--max-content-width);
+  margin: auto;
+
+  a {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    strong {
+      color: var(--text)
+    }
+  }
+
+  #footer-nav-previous {
+    text-align: start;
+  }
+
+  #footer-nav-next {
+    text-align: end;
   }
 }
 
@@ -180,7 +201,8 @@ header {
     background-color: #2b2b2b;
     overflow: auto;
   }
-
+  
+  li code,
   p code { 
     color: white; 
     background: var(#2b2b2b);
