@@ -76,6 +76,7 @@ main {
   & > #content {
     margin: auto;
     max-width: var(--max-content-width);
+    min-height: calc(100vh - 240px); // 240 =  header + footer
   }
 }
 
@@ -116,8 +117,9 @@ header {
 
 footer#footer {
   display: flex;
-  padding: 40px 0;
+  align-items: center;
   max-width: var(--max-content-width);
+  height: 120px;
   margin: auto;
 
   a {
@@ -173,7 +175,6 @@ footer#footer {
 #main {
   max-height: calc(100vh - 100px);
   overflow: auto;
-  padding-bottom: 50px;
 
   opacity: 1;
   transition: 0.1s linear;
